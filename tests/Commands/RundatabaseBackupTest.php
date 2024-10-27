@@ -23,13 +23,12 @@ it('creates backup directory if it does not exist', function () {
 
     // Assert
     $this->assertTrue(File::exists($this->backupPath));
-    $this->assertTrue(File::exists($this->backupPath . '/.gitignore'));
+    $this->assertTrue(File::exists($this->backupPath.'/.gitignore'));
     $this->assertStringContainsString(
         'backup-*.sql',
-        File::get($this->backupPath . '/.gitignore')
+        File::get($this->backupPath.'/.gitignore')
     );
 });
-
 
 it('creates backup with correct filename pattern', function () {
     // Act
