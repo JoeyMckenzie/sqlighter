@@ -1,30 +1,21 @@
 <?php
 
-namespace Joey McKenzie\Sqlighter\Tests;
+declare(strict_types=1);
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+namespace JoeyMcKenzie\Sqlighter\Tests;
+
+use Illuminate\Support\Facades\App;
+use JoeyMcKenzie\Sqlighter\SqlighterServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Joey McKenzie\Sqlighter\SqlighterServiceProvider;
 
-class TestCase extends Orchestra
+final class TestCase extends Orchestra
 {
     protected function setUp(): void
     {
         parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Joey McKenzie\\Sqlighter\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
     }
 
-    protected function getPackageProviders($app)
-    {
-        return [
-            SqlighterServiceProvider::class,
-        ];
-    }
-
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp(App $app): void
     {
         config()->set('database.default', 'testing');
 
@@ -32,5 +23,12 @@ class TestCase extends Orchestra
         $migration = include __DIR__.'/../database/migrations/create_sqlighter_table.php.stub';
         $migration->up();
         */
+    }
+
+    protected function getPackageProviders(App $app): array
+    {
+        return [
+            SqlighterServiceProvider::class,
+        ];
     }
 }

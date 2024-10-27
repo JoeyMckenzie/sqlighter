@@ -2,11 +2,12 @@
     "name": "joeymckenzie/sqlighter",
     "description": "A Laravel package for backing up your SQLite database.",
     "keywords": [
-        "Joey McKenzie",
-        "laravel",
+        "sqlite",
+        "backups",
         "sqlighter"
     ],
-    "homepage": "https://github.com/joey-mckenzie27/sqlighter",
+    "version": "0.1.0",
+    "homepage": "https://github.com/joeymckenzie/sqlighter",
     "license": "MIT",
     "authors": [
         {
@@ -17,7 +18,6 @@
     ],
     "require": {
         "php": "^8.3",
-        "spatie/laravel-package-tools": "^1.16",
         "illuminate/contracts": "^10.0||^11.0"
     },
     "require-dev": {
@@ -31,8 +31,7 @@
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan-deprecation-rules": "^1.1",
         "phpstan/phpstan-phpunit": "^1.3",
-        "phpstan/phpstan-strict-rules": "^1.6",
-        "spatie/laravel-ray": "^1.35"
+        "phpstan/phpstan-strict-rules": "^1.6"
     },
     "autoload": {
         "psr-4": {
