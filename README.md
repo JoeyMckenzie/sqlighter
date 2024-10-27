@@ -1,9 +1,9 @@
 # A Laravel package for backing up your SQLite database.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/joey-mckenzie27/sqlighter.svg?style=flat-square)](https://packagist.org/packages/joey-mckenzie27/sqlighter)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/joey-mckenzie27/sqlighter/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/joey-mckenzie27/sqlighter/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/joey-mckenzie27/sqlighter/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/joey-mckenzie27/sqlighter/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/joey-mckenzie27/sqlighter.svg?style=flat-square)](https://packagist.org/packages/joey-mckenzie27/sqlighter)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/joey-mckenzie27/sqlighter.svg?style=flat-square)](https://packagist.org/packages/joeymckenzie/sqlighter)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/joey-mckenzie27/sqlighter/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/joeymckenzie/sqlighter/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/joey-mckenzie27/sqlighter/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/joeymckenzie/sqlighter/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/joey-mckenzie27/sqlighter.svg?style=flat-square)](https://packagist.org/packages/joeymckenzie/sqlighter)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
