@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace JoeyMcKenzie\Sqlighter\Tests;
 
-use Illuminate\Support\Facades\App;
 use JoeyMcKenzie\Sqlighter\SqlighterServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -15,7 +14,7 @@ final class TestCase extends Orchestra
         parent::setUp();
     }
 
-    public function getEnvironmentSetUp(App $app): void
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
 
@@ -25,7 +24,10 @@ final class TestCase extends Orchestra
         */
     }
 
-    protected function getPackageProviders(App $app): array
+    /**
+     * @return class-string[]
+     */
+    protected function getPackageProviders($app): array
     {
         return [
             SqlighterServiceProvider::class,
