@@ -1,12 +1,14 @@
 <?php
 
-namespace VendorName\Skeleton;
+declare(strict_types=1);
 
+namespace JoeyMcKenzie\Sqlighter;
+
+use JoeyMcKenzie\Sqlighter\Commands\RunDatabaseBackup;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+final class SqlighterServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +18,8 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('sqlighter')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_migration_table_name_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasCommand(RunDatabaseBackup::class);
     }
 }
