@@ -29,9 +29,21 @@ final class RunDatabaseBackup extends Command
         }
 
         $prefix = Config::string('sqlighter.file_prefix');
-        $folderPath = Config::string('sqlighter.storage_path');
-        $databaseName = Config::string('sqlighter.database_name');
+        $folderPath = Config::string('sqlighter.storage_folder');
+        $databaseName = Config::string('sqlighter.database_filename');
         $filename = "$prefix-".now()->timestamp.'.sql';
+        $backupDirectory = database_path($folderPath);
+
+        if (! File::exists($backupDirectory)) {
+            $this->info("Creating backup directory at $backupDirectory");
+            $gitignorePath = $backupDirectory.'/.gitignore';
+
+            File::makeDirectory($backupDirectory, 0755, true);
+
+            $this->info("Creating .gitignore file at $gitignorePath");
+
+            File::put($gitignorePath, "$prefix-*.sql\n");
+        }
 
         File::copy(database_path($databaseName), database_path($folderPath.$filename));
 

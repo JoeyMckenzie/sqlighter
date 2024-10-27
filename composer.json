@@ -36,8 +36,7 @@
     },
     "autoload": {
         "psr-4": {
-            "JoeyMcKenzie\\Sqlighter\\": "src/",
-            "JoeyMcKenzie\\Sqlighter\\Database\\Factories\\": "database/factories/"
+            "JoeyMcKenzie\\Sqlighter\\": "src/"
         }
     },
     "autoload-dev": {
