@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'enabled' => env('SQLIGTHER_ENABLED', true),
+    'enabled' => env('SQLIGHTER_ENABLED', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'frequency' => env('SQLIGTHER_FREQUENCY', 4),
+    'frequency' => env('SQLIGHTER_FREQUENCY', 4),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'database_filename' => env('SQLIGTHER_DATABASE_FILENAME', 'database.sqlite'),
+    'database_filename' => env('SQLIGHTER_DATABASE_FILENAME', 'database.sqlite'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'copies_to_maintain' => env('SQLIGTHER_COPIES', 5),
+    'copies_to_maintain' => env('SQLIGHTER_COPIES', 5),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'storage_folder' => env('SQLIGTHER_STORAGE', 'backups/'),
+    'storage_folder' => env('SQLIGHTER_STORAGE', 'backups/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,6 +80,6 @@ return [
     |
     */
 
-    'file_prefix' => env('SQLIGTHER_PREFIX', 'backup'),
+    'file_prefix' => env('SQLIGHTER_PREFIX', 'backup'),
 
 ];

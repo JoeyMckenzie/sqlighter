@@ -36,22 +36,22 @@ This will create a `config/sqligther.php` configuration file. Customize the opti
 ```php
 return [
     // Enable/disable automatic backups
-    'enabled' => env('SQLIGTHER_ENABLED', true),
+    'enabled' => env('SQLIGHTER_ENABLED', true),
 
     // Hours between backups
-    'frequency' => env('SQLIGTHER_FREQUENCY', 3),
+    'frequency' => env('SQLIGHTER_FREQUENCY', 3),
 
     // SQLite database filename
-    'database' => env('SQLIGTHER_DATABASE', 'database.sqlite'),
+    'database' => env('SQLIGHTER_DATABASE', 'database.sqlite'),
 
     // How many backup copies to maintain
-    'copies_to_maintain' => env('SQLIGTHER_COPIES', 5),
+    'copies_to_maintain' => env('SQLIGHTER_COPIES', 5),
 
     // Where to store backups (relative to database directory)
-    'storage_folder' => env('SQLIGTHER_STORAGE', 'backups/'),
+    'storage_folder' => env('SQLIGHTER_STORAGE', 'backups/'),
 
     // Prefix for backup files
-    'file_prefix' => env('SQLIGTHER_PREFIX', 'backup'),
+    'file_prefix' => env('SQLIGHTER_PREFIX', 'backup'),
 ];
 ```
 
