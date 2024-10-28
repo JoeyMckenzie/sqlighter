@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use JoeyMcKenzie\Sqlighter\Commands\RunDatabaseBackup;
 
-describe(RunDatabaseBackup::class, function () {
-    beforeEach(function () {
+describe(RunDatabaseBackup::class, function (): void {
+    beforeEach(function (): void {
         $this->backupPath = database_path('backups/');
         $this->databasePath = database_path('database.sqlite');
     });
 
-    test('creates backup directory if it does not exist', function () {
+    test('creates backup directory if it does not exist', function (): void {
         // Arrange
         expect(File::exists($this->backupPath))->toBeFalse();
 
@@ -27,7 +27,7 @@ describe(RunDatabaseBackup::class, function () {
         expect(File::get($this->backupPath.'/.gitignore'))->toContain('backup-*.sql');
     });
 
-    test('creates backup with correct filename pattern', function () {
+    test('creates backup with correct filename pattern', function (): void {
         // Act
         $this->artisan(RunDatabaseBackup::class)
             ->assertSuccessful();
@@ -40,7 +40,7 @@ describe(RunDatabaseBackup::class, function () {
         $this->assertMatchesRegularExpression('/backup-\d+\.sql/', $filename);
     });
 
-    test('creates backup with correct filename prefix', function () {
+    test('creates backup with correct filename prefix', function (): void {
         // Arrange
         Config::set('sqlighter.file_prefix', 'db_backup');
 
@@ -56,7 +56,7 @@ describe(RunDatabaseBackup::class, function () {
         $this->assertMatchesRegularExpression('/db_backup-\d+\.sql/', $filename);
     });
 
-    test('maintains correct number of backup copies', function () {
+    test('maintains correct number of backup copies', function (): void {
         // Arrange
         Config::set('sqlighter.copies_to_maintain', 2);
 
@@ -74,7 +74,7 @@ describe(RunDatabaseBackup::class, function () {
         expect(count($files))->toBe(2);
     });
 
-    test('ensure backups are skipped when not using sqlite', function () {
+    test('ensure backups are skipped when not using sqlite', function (): void {
         // Arrange
         Config::set('database.default', 'mysql');
 
@@ -84,7 +84,7 @@ describe(RunDatabaseBackup::class, function () {
             ->assertFailed();
     });
 
-    test('ensure backups are skipped when configuration option is disabled', function () {
+    test('ensure backups are skipped when configuration option is disabled', function (): void {
         // Arrange
         Config::set('sqlighter.enabled', false);
 

@@ -30,3 +30,5 @@ phpstan.neon
 testbench.yaml
 /docs
 /coverage
+
+.php-cs-fixer.cache

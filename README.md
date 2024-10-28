@@ -64,6 +64,26 @@ setup is required other than ensuring your Laravel scheduler is running:
 cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
+Backups are configured to run every six hours by default, though can be overridden using the `sqlighter.frequency`
+configuration option. Any valid cron string will work:
+
+```php
+return [
+    // Using hour intervals
+    'frequency' => 1,    // Every hour
+    'frequency' => 12,   // Every 12 hours
+    'frequency' => 24,   // Daily
+    'frequency' => 168,  // Weekly
+
+    // Or using cron expressions
+    'frequency' => '0 * * * *',     // Every hour
+    'frequency' => '0 */12 * * *',  // Every 12 hours
+    'frequency' => '0 0 * * *',     // Daily at midnight
+    'frequency' => '0 0 * * 0',     // Weekly on Sunday at midnight
+    'frequency' => '30 2 * * *',    // Daily at 2:30 AM
+];
+```
+
 ### Manual Backups
 
 You can also trigger a backup manually using the provided Artisan command:

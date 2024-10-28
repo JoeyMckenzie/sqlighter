@@ -6,16 +6,17 @@ namespace JoeyMcKenzie\Sqlighter\Tests;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use JoeyMcKenzie\Sqlighter\Commands\RunDatabaseBackup;
 use JoeyMcKenzie\Sqlighter\SqlighterServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Override;
 
-class TestCase extends Orchestra
+final class TestCase extends Orchestra
 {
     private string $backupPath;
 
     private string $databasePath;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
@@ -35,6 +36,7 @@ class TestCase extends Orchestra
         }
     }
 
+    #[Override]
     protected function tearDown(): void
     {
         // Clean up test files
@@ -49,6 +51,7 @@ class TestCase extends Orchestra
         parent::tearDown();
     }
 
+    #[Override]
     protected function getPackageProviders($app): array
     {
         return [
@@ -56,6 +59,7 @@ class TestCase extends Orchestra
         ];
     }
 
+    #[Override]
     protected function defineEnvironment($app): void
     {
         // Configure test environment

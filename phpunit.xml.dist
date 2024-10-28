@@ -16,8 +16,11 @@
     backupStaticProperties="false"
 >
     <testsuites>
-        <testsuite name="Joey McKenzie Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Arch">
+            <directory suffix="ArchTest.php">tests</directory>
         </testsuite>
     </testsuites>
     <logging>

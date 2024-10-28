@@ -8,9 +8,11 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use JoeyMcKenzie\Sqlighter\Commands\RunDatabaseBackup;
+use Override;
 
 final class SqlighterServiceProvider extends ServiceProvider
 {
+    #[Override]
     public function register(): void
     {
         $this->mergeConfigFrom(
@@ -32,21 +34,44 @@ final class SqlighterServiceProvider extends ServiceProvider
 
         // Register the scheduled task only if backups are enabled
         if (Config::boolean('sqlighter.enabled')) {
-            $this->app->booted(function () {
+            $this->app->booted(function (): void {
                 $schedule = $this->app->make(Schedule::class);
-                $frequency = Config::string('sqlighter.frequency');
-
-                if ($this->isValidCron($frequency)) {
-                    $schedule
-                        ->command('sqlighter:backup')
-                        ->cron($frequency);
-                } else {
-                    $schedule
-                        ->command('sqlighter:backup')
-                        ->everySixHours();
-                }
+                $frequency = Config::get('sqlighter.frequency');
+                $this->scheduleBackup($schedule, $frequency);
             });
         }
+    }
+
+    private function scheduleBackup(Schedule $schedule, mixed $frequency): void
+    {
+        $command = $schedule->command('sqlighter:backup')
+            ->timezone(Config::string('app.timezone'))
+            ->withoutOverlapping();
+
+        // If it's a valid cron expression, use it directly
+        if (is_string($frequency) && $this->isValidCron($frequency)) {
+            $command->cron($frequency);
+
+            return;
+        }
+
+        // If it's a number, treat it as hours
+        if (is_numeric($frequency)) {
+            $hours = (int) $frequency;
+
+            match ($hours) {
+                1 => $command->hourly(),
+                12 => $command->twiceDaily(0, 12),
+                24 => $command->daily(),
+                168 => $command->weekly(),
+                default => $command->cron("0 */$hours * * *")
+            };
+
+            return;
+        }
+
+        // Default fallback
+        $command->everySixHours();
     }
 
     private function isValidCron(string $cron): bool

@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'frequency' => env('SQLIGTHER_FREQUENCY', ''),
+    'frequency' => env('SQLIGTHER_FREQUENCY', 4),
 
     /*
     |--------------------------------------------------------------------------

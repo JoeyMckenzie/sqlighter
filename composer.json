@@ -28,11 +28,13 @@
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-arch": "^2.7",
         "pestphp/pest-plugin-laravel": "^2.3",
+        "pestphp/pest-plugin-type-coverage": "^2.8",
         "pestphp/pest-plugin-watch": "^2.1",
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan-deprecation-rules": "^1.1",
         "phpstan/phpstan-phpunit": "^1.3",
-        "phpstan/phpstan-strict-rules": "^1.6"
+        "phpstan/phpstan-strict-rules": "^1.6",
+        "rector/rector": "^1.2"
     },
     "autoload": {
         "psr-4": {
@@ -48,7 +50,10 @@
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
         "clear": "@php vendor/bin/testbench package:purge-sqlighter --ansi",
-        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "prepare": [
+            "@php vendor/bin/testbench package:discover --ansi",
+            "@hooks"
+        ],
         "build": [
             "@composer run prepare",
             "@php vendor/bin/testbench workbench:build --ansi"
@@ -58,12 +63,27 @@
             "@composer run build",
             "@php vendor/bin/testbench serve"
         ],
-        "analyse": "vendor/bin/phpstan analyse",
+        "hooks": "git config core.hookspath .githooks && lefthook install",
         "test": "vendor/bin/pest",
         "test:coverage": "vendor/bin/pest --coverage",
         "test:watch": "vendor/bin/pest --watch",
-        "format": "vendor/bin/pint",
-        "lint": "vendor/bin/phpstan analyze"
+        "test:types": "./vendor/bin/pest --type-coverage --min=100",
+        "fmt": "vendor/bin/pint",
+        "fmt:test": "./vendor/bin/pint --test",
+        "lint": "vendor/bin/phpstan analyze",
+        "refactor": "vendor/bin/rector process",
+        "refactor:test": "vendor/bin/rector process --dry-run",
+        "check": [
+            "@test",
+            "@test:types",
+            "@fmt:test",
+            "@lint",
+            "@refactor:test"
+        ],
+        "fix": [
+            "@fmt",
+            "@refactor"
+        ]
     },
     "config": {
         "sort-packages": true,
