@@ -8,12 +8,12 @@
 SQLighter is a lightweight SQLite backup solution for Laravel applications. SQLighter provides automated backups of your
 SQLite database with configurable retention policies, while allowing for manual backups through an artisan command.
 
--   🔄 Automated SQLite database backups
--   ⚙️ Configurable backup frequency
--   📦 Backup file rotation with configurable retention
--   🗂️ Automatic backup directory creation
--   🚫 Git-friendly (auto-generates appropriate .gitignore)
--   💡 Simple integration with Laravel's scheduler
+-  🔄 Automated SQLite database backups
+-  ⚙️ Configurable backup frequency
+-  📦 Backup file rotation with configurable retention
+-  🗂️ Automatic backup directory creation
+-  🚫 Git-friendly (auto-generates appropriate .gitignore)
+-  💡 Simple integration with Laravel's scheduler
 
 ## Installation
 
