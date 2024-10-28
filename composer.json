@@ -43,8 +43,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "JoeyMcKenzie\\Sqlighter\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/"
+            "JoeyMcKenzie\\Sqlighter\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -93,10 +92,7 @@
         "laravel": {
             "providers": [
                 "JoeyMcKenzie\\Sqlighter\\SqlighterServiceProvider"
-            ],
-            "aliases": {
-                "Sqlighter": "JoeyMcKenzie\\Sqlighter\\Facades\\Sqlighter"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
