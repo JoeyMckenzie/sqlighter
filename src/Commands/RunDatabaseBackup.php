@@ -45,18 +45,23 @@ final class RunDatabaseBackup extends Command
             File::put($gitignorePath, "$prefix-*.sql\n");
         }
 
-        File::copy(database_path($databaseName), database_path($folderPath.$filename));
+        File::copy(database_path($databaseName), $backupDirectory.$filename);
 
-        $glob = File::glob(database_path("$folderPath*.sql"));
+        $glob = File::glob($backupDirectory."/$prefix-*.sql");
         $copiesToMaintain = Config::integer('sqlighter.copies_to_maintain');
 
-        $this->comment("Backup complete, removing the previous $copiesToMaintain database copies");
+        $this->info("Backup complete, removing the previous $copiesToMaintain database copies");
 
-        collect($glob)->sort()->reverse()->slice($copiesToMaintain)->each(
-            fn (string $backup): bool => $this->deleteDatabaseBackup($backup),
-        );
+        collect($glob)
+            ->sort()
+            ->reverse()
+            ->slice($copiesToMaintain)
+            ->each(fn (string $backup): bool => $this->deleteDatabaseBackup($backup));
 
-        $this->comment('Backup copies removed');
+        $this->info(sprintf(
+            'Backup complete, maintaining %d most recent copies',
+            count(File::glob($backupDirectory."/$prefix-*.sql"))
+        ));
 
         return self::SUCCESS;
     }

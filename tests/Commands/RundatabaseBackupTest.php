@@ -15,36 +15,31 @@ beforeEach(function () {
 
 it('creates backup directory if it does not exist', function () {
     // Arrange
-    $this->assertFalse(File::exists≤($this->backupPath));
+    expect(File::exists($this->backupPath))->toBeFalse();
 
     // Act
     $this->artisan(RunDatabaseBackup::class)
         ->assertSuccessful();
 
     // Assert
-    $this->assertTrue(File::exists($this->backupPath));
-    $this->assertTrue(File::exists($this->backupPath . '/.gitignore'));
-    $this->assertStringContainsString(
-        'backup-*.sql',
-        File::get($this->backupPath . '/.gitignore')
-    );
+    expect(File::exists($this->backupPath))->toBeTrue();
+    expect(File::get($this->backupPath.'/.gitignore'))->toContain('backup-*.sql');
 });
-
 
 it('creates backup with correct filename pattern', function () {
     // Act
     $this->artisan(RunDatabaseBackup::class)
         ->assertSuccessful();
 
-    // Assert
+    // Act & Assert
     $files = File::files($this->backupPath);
-    $this->assertCount(1, $files);
+    expect(count($files))->toBe(1);
 
-    $filename = basename($files[0]);
+    $filename = basename($files[0]->getFilename());
     $this->assertMatchesRegularExpression('/backup-\d+\.sql/', $filename);
 });
 
-it('maintains correct number of backup copies', function () {
+test('maintains correct number of backup copies', function () {
     // Arrange
     Config::set('sqlighter.copies_to_maintain', 2);
 
@@ -54,12 +49,12 @@ it('maintains correct number of backup copies', function () {
             ->assertSuccessful();
 
         // Add small delay to ensure different timestamps
-        usleep(1000);
+        sleep(1);
     }
 
     // Assert
     $files = File::files($this->backupPath);
-    $this->assertCount(2, $files);
+    expect(count($files))->toBe(2);
 });
 
 it('ensure backups are skipped when not using sqlite', function () {
