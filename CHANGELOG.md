@@ -1,3 +1,7 @@
 # Changelog
 
-All notable changes to `sqlighter` will be documented in this file.
+## Version 0.1.0
+
+> 28 October, 2024
+
+- Initial release!
