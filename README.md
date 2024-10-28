@@ -1,12 +1,12 @@
-# SQLighter: Laravel package for backing up your SQLite database.
+# SQLighter: Backup Commands for your SQLite Databases
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/joeymckenzie/sqlighter.svg?style=flat-square)](https://packagist.org/packages/joeymckenzie/sqlighter)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/joeymckenzie/sqlighter/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/joeymckenzie/sqlighter/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/joeymckenzie/sqlighter/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/joeymckenzie/sqlighter/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/joeymckenzie/sqlighter.svg?style=flat-square)](https://packagist.org/packages/joeymckenzie/sqlighter)
 
-A lightweight SQLite backup solution for Laravel applications. SQLighter provides automated backups of your SQLite
-database with configurable retention policies.
+SQLighter is a lightweight SQLite backup solution for Laravel applications. SQLighter provides automated backups of your
+SQLite database with configurable retention policies, while allowing for manual backups through an artisan command.
 
 - 🔄 Automated SQLite database backups
 - ⚙️ Configurable backup frequency
@@ -99,11 +99,6 @@ composer test
 
 If you discover a security vulnerability within SQLighter, please send an e-mail to Joey McKenzie
 via [joey.mckenzie27@gmail.com](mailto:joey.mckenzie27@gmail.com).
-
-## Credits
-
-- [Joey McKenzie](https://github.com/joeymckenzie)
-- [All Contributors](../../contributors)
 
 ## License
 
