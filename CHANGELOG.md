@@ -6,8 +6,6 @@
 
 - Improved cron configuration for scheduling backups
 
-## Version 0.1.0
-
-> 28 October, 2024
+## Version 0.1.0 - 2024-10-28
 
 - Initial release!
