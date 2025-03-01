@@ -11,18 +11,18 @@ use JoeyMcKenzie\Sqlighter\SqlighterServiceProvider;
 describe(SqlighterServiceProvider::class, function (): void {
     beforeEach(function (): void {
         Config::set('sqlighter.enabled', true);
-        $this->app->singleton(Schedule::class, fn (): \Illuminate\Console\Scheduling\Schedule => new Schedule);
+        $this->app->singleton(Schedule::class, fn (): Schedule => new Schedule);
     });
 
     $refreshSchedule = function () {
-        $this->app->singleton(Schedule::class, fn (): \Illuminate\Console\Scheduling\Schedule => new Schedule);
+        $this->app->singleton(Schedule::class, fn (): Schedule => new Schedule);
         $provider = new SqlighterServiceProvider($this->app);
         $provider->boot();
 
         return $this->app->make(Schedule::class);
     };
 
-    test('hourly backups can be scheduled', function () use ($refreshSchedule): void {
+    it('hourly backups can be scheduled', function () use ($refreshSchedule): void {
         // Arrange
         Config::set('sqlighter.frequency', 1);
 
@@ -38,7 +38,7 @@ describe(SqlighterServiceProvider::class, function (): void {
             ->toBe('0 * * * *');
     });
 
-    test('custom cron expressions can be used for the schedule', function () use ($refreshSchedule): void {
+    it('custom cron expressions can be used for the schedule', function () use ($refreshSchedule): void {
         // Arrange
         Config::set('sqlighter.frequency', '30 2 * * *');
 
@@ -54,7 +54,7 @@ describe(SqlighterServiceProvider::class, function (): void {
             ->toBe('30 2 * * *');
     });
 
-    test('defaults to every six hours when frequency is invalid', function () use ($refreshSchedule): void {
+    it('defaults to every six hours when frequency is invalid', function () use ($refreshSchedule): void {
         // Arrange
         Config::set('sqlighter.frequency', 'invalid');
 
@@ -70,7 +70,7 @@ describe(SqlighterServiceProvider::class, function (): void {
             ->toBe('0 */6 * * *');
     });
 
-    test('it does not schedule command when disabled', function () use ($refreshSchedule): void {
+    it('it does not schedule command when disabled', function () use ($refreshSchedule): void {
         // Arrange
         Config::set('sqlighter.enabled', false);
 
@@ -81,7 +81,7 @@ describe(SqlighterServiceProvider::class, function (): void {
         expect(collect($schedule->events()))->toBeEmpty();
     });
 
-    test('daily schedules can be scheduled', function () use ($refreshSchedule): void {
+    it('daily schedules can be scheduled', function () use ($refreshSchedule): void {
         // Arrange
         Config::set('sqlighter.frequency', 24);
 
@@ -97,7 +97,7 @@ describe(SqlighterServiceProvider::class, function (): void {
             ->toBe('0 0 * * *');
     });
 
-    test('it schedules weekly backup correctly', function () use ($refreshSchedule): void {
+    it('it schedules weekly backup correctly', function () use ($refreshSchedule): void {
         // Arrange
         Config::set('sqlighter.frequency', 168);
 
@@ -113,7 +113,7 @@ describe(SqlighterServiceProvider::class, function (): void {
             ->toBe('0 0 * * 0');
     });
 
-    test('it configures schedule with proper command settings', function () use ($refreshSchedule): void {
+    it('it configures schedule with proper command settings', function () use ($refreshSchedule): void {
         // Arrange
         Config::set('sqlighter.frequency', 1);
 
