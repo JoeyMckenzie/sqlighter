@@ -47,6 +47,7 @@ final class RunDatabaseBackup extends Command
 
         File::copy(database_path($databaseName), $backupDirectory.$filename);
 
+        /** @var string[] $glob */
         $glob = File::glob($backupDirectory."/$prefix-*.sql");
         $copiesToMaintain = Config::integer('sqlighter.copies_to_maintain');
 
