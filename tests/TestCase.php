@@ -10,7 +10,7 @@ use Orchestra\Testbench\TestCase as Orchestra;
 use Override;
 use Sqlighter\SqlighterServiceProvider;
 
-final class TestCase extends Orchestra
+class TestCase extends Orchestra
 {
     private string $backupPath;
 
