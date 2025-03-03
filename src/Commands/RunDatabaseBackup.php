@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace JoeyMcKenzie\Sqlighter\Commands;
+namespace Sqlighter\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace JoeyMcKenzie\Sqlighter\Tests;
+namespace Tests;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use JoeyMcKenzie\Sqlighter\Commands\RunDatabaseBackup;
+use Sqlighter\Commands\RunDatabaseBackup;
 
 describe(RunDatabaseBackup::class, function (): void {
     beforeEach(function (): void {

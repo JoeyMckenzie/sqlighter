@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace JoeyMcKenzie\Sqlighter\Tests\Feature;
+namespace Tests\Feature;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Config;
-use JoeyMcKenzie\Sqlighter\SqlighterServiceProvider;
+use Sqlighter\SqlighterServiceProvider;
 
 describe(SqlighterServiceProvider::class, function (): void {
     beforeEach(function (): void {

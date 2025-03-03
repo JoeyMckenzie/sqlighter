@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Tests;
+
 arch('it will not use debugging functions')
     ->expect(['dd', 'dump'])
     ->each->not->toBeUsed();

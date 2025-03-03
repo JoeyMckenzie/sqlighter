@@ -25,6 +25,7 @@
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.1.1||^7.10.0",
         "orchestra/testbench": "^9.0.0||^8.22.0",
+        "peckphp/peck": "^0.1.2",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-arch": "^2.7",
         "pestphp/pest-plugin-laravel": "^2.3",
@@ -38,12 +39,12 @@
     },
     "autoload": {
         "psr-4": {
-            "JoeyMcKenzie\\Sqlighter\\": "src/"
+            "Sqlighter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "JoeyMcKenzie\\Sqlighter\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -69,12 +70,14 @@
         "lint": "vendor/bin/phpstan analyze",
         "refactor": "vendor/bin/rector process",
         "refactor:test": "vendor/bin/rector process --dry-run",
+        "typos": "./vendor/bin/peck",
         "check": [
             "@test",
             "@test:types",
             "@fmt:test",
             "@lint",
-            "@refactor:test"
+            "@refactor:test",
+            "@typos"
         ],
         "fix": [
             "@fmt",
@@ -91,7 +94,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "JoeyMcKenzie\\Sqlighter\\SqlighterServiceProvider"
+                "Sqlighter\\SqlighterServiceProvider"
             ]
         }
     },

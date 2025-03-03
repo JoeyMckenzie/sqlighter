@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace JoeyMcKenzie\Sqlighter\Tests;
+namespace Tests;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use JoeyMcKenzie\Sqlighter\SqlighterServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Override;
+use Sqlighter\SqlighterServiceProvider;
 
-class TestCase extends Orchestra
+final class TestCase extends Orchestra
 {
     private string $backupPath;
 

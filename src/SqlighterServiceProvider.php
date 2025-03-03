@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace JoeyMcKenzie\Sqlighter;
+namespace Sqlighter;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use JoeyMcKenzie\Sqlighter\Commands\RunDatabaseBackup;
 use Override;
+use Sqlighter\Commands\RunDatabaseBackup;
 
 final class SqlighterServiceProvider extends ServiceProvider
 {
