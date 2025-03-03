@@ -1,12 +1,3 @@
-pre-push:
-  commands:
-    vendors-audit:
-      tags: backend security
-      run: composer audit
-    checks:
-      tags: backend code quality checks
-      run: composer run check
-
 pre-commit:
   parallel: true
   commands:
@@ -15,3 +6,12 @@ pre-commit:
       glob: "*.php"
       run: composer run fix {staged_files}
       stage_fixed: true
+
+pre-push:
+  commands:
+    vendors-audit:
+      tags: backend security
+      run: composer audit
+    checks:
+      tags: backend code quality checks
+      run: composer run check
