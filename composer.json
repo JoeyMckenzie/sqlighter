@@ -25,7 +25,7 @@
         "laravel/pint": "^1.21",
         "nunomaduro/collision": "^v8.5.0",
         "orchestra/testbench": "^v9.11.0",
-        "peckphp/peck": "^0.1.2",
+        "peckphp/peck": "^0.3.0",
         "pestphp/pest": "^v3.7",
         "pestphp/pest-plugin-arch": "^v3.0",
         "pestphp/pest-plugin-laravel": "^v3.1",
